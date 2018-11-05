@@ -19,11 +19,11 @@ nextApp.prepare().then(() => {
   const server = express();
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({extended: true}));
-  app.use('/api', require('./routes/api'));
-  app.get('*', (req, res) => {
+  //server.use('/api', require('./routes/api'));
+  server.get('*', (req, res) => {
     return handle(req, res)
   });
-  app.listen(PORT, err => {
+  server.listen(PORT, err => {
     if(err) throw err;
     console.log(`Ready at http://localhost:${PORT}`);
   })
